@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->foreignId('admin_id')->nullable();
-            $table->foreignId('group_id');
+
+            $table->foreignId('group_id')->constrained('groups');
 
 
             $table->string('name',100);

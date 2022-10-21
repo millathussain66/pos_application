@@ -30,6 +30,6 @@ Route::delete('groups/{id}',[UserGroupController::class,'destroy'])->name('group
 // // Delete Method
 // Route::delete('users/{id}',[UsersController::class,'delete'])->name('delete');
 
-Route::resource('users',UserController::class);
+Route::resource('users',UserController::class,['except'=>['show']]);
 
 

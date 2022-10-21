@@ -29,15 +29,10 @@ class Group extends Model
         return $arr;
      }
 
-    //  Relation to User Table
-
-
-    // public function user()
-    // {
-    //     return  $this->hasMany(Group::class);
-    // }
-
-
+     public function user()
+     {
+       return $this->hasMany(User::class);
+     }
 
 
 

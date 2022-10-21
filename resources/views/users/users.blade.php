@@ -50,46 +50,19 @@
                     </tr>
                 </tfoot>
                 <tbody>
-
                     @foreach($users as $user)
                     <tr>
                         <td>{{ $user->id }}</td>
-
-
                         <td>{{ $user->group->title }}</td>
-
-
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->phone }}</td>
                         <td>{{ $user->address }}</td>
-
-
-                        <td>
-
-
-
-                            <form action="{{ url('user',$user->id) }}" method="post">
-                                <a class="btn btn-dark" href="{{ route('users.edit',['user'=> $user->id]) }}">
-
-                                    <i class="fa fa-edit"></i>
-                                    </a>
-
-                                @csrf
-                                @method('DELETE')
-
-
-                                <button onclick="alert('are You Sure')" type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> </button>
-
-                            </form>
-                        </td>
+                
 
 
                     </tr>
-
                     @endforeach
-
-
                 </tbody>
             </table>
         </div>

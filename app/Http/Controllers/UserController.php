@@ -17,9 +17,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        $this->data['users'] = User::all();
+        $this->data['users'] = User::with('group')->get();
 
-        return view('users.users', $this->data);
+         return view('users.users', $this->data);
+
+
+
     }
 
     /**
@@ -60,10 +63,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
