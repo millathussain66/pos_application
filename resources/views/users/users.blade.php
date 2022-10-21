@@ -58,9 +58,18 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->phone }}</td>
                         <td>{{ $user->address }}</td>
-                
 
+                        <td>
+                            <form action="{{ route('users.destroy',['user'=> $user->id]) }}" method="post">
+                                <a href="{{ route('users.edit',['user'=> $user->id]) }}" class="btn btn-info"><i class="fa fa-edit"></i></a>
 
+                                @csrf
+                                @method('DELETE')
+
+                                <button onclick="alert('are You Sure')" type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

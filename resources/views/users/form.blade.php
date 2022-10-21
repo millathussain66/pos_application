@@ -3,17 +3,42 @@
 
 @section('main_content')
 
+
+
+
+
+@if($mode == 'edite')
+<h2>Update User => {{ $users->name }} Information</h2>
+@else
 <h2>Add New User</h2>
+
+
+@endif
+
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
+    @if($mode == 'edite')
+    <h6 class="m-0 font-weight-bold text-primary">User Update</h6>
+        @else
         <h6 class="m-0 font-weight-bold text-primary">User Create</h6>
+        @endif
     </div>
     <div class="card-body">
 
         <div class="row justify-content-center">
             <div class="col-xl-6">
+
+
+            @if(isset($users))
+
+            {!!Form::model($users,['route' => ['users.update', $users->id], 'method' => 'put']) !!}
+
+
+            @else
+            {!!Form::open(['route' => 'users.store', 'method' => 'post']) !!}
+            @endif
 
 
 
@@ -79,12 +104,7 @@
                             @enderror
                         </small>
                     </div>
-
-
-
-
-
-
+                    
                     {!! Form::submit('Submit!',['class'=>'btn btn-primary']) !!}
 
                     {!! Form::close() !!}

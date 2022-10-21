@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\updateUserRequest;
 use App\Models\Group;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $this->data['users'] = User::with('group')->get();
+        $this->data['users']    = User::with('group')->get();
 
          return view('users.users', $this->data);
 
@@ -33,8 +34,10 @@ class UserController extends Controller
     public function create()
     {
 
-        $this->data['groups'] = Group::arrayForSelect();
-        return view('users.create', $this->data);
+        $this->data['groups']    = Group::arrayForSelect();
+        $this->data['mode']      = "create";
+
+        return view('users.form', $this->data);
 
     }
 
@@ -48,7 +51,6 @@ class UserController extends Controller
     {
 
         $formData = $request->all();
-
         if (User::create($formData)) {
 
             Session::flash('message', 'Your Group Created SuccessFully');
@@ -73,7 +75,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $this->data['users']        = User::findOrFail($id);
+        $this->data['groups']       = Group::arrayForSelect();
+        $this->data['mode']         = "edite";
+
+        return view('users.form',$this->data);
     }
 
     /**
@@ -83,10 +89,27 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(updateUserRequest $request, $id)
     {
-        //
-    }
+        $data               = $request->all();
+        $user               = User::find($id);
+
+        $user->group_id     = $data['group_id'];
+        $user->name         = $data['name'];
+        $user->email        = $data['email'];
+        $user->phone        = $data['phone'];
+        $user->address      = $data['address'];
+
+
+        if ($user->save()) {
+
+            Session::flash('message', 'User Updated SuccessFully');
+        }
+        return redirect()->to('users');
+
+
+
+        }
 
     /**
      * Remove the specified resource from storage.
@@ -96,6 +119,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (User::find($id)->delete()) {
+
+            Session::flash('message', 'User Delete SuccessFully');
+        }
+        return redirect()->to('users');
+
     }
 }
