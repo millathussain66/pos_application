@@ -61,6 +61,8 @@
 
                         <td>
                             <form action="{{ route('users.destroy',['user'=> $user->id]) }}" method="post">
+                                <a href="{{ route('users.show',['user'=> $user->id]) }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
+
                                 <a href="{{ route('users.edit',['user'=> $user->id]) }}" class="btn btn-info"><i class="fa fa-edit"></i></a>
 
                                 @csrf

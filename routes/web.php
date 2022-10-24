@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CatagoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserGroupController;
 use Illuminate\Support\Facades\Route;
@@ -30,8 +31,15 @@ Route::delete('groups/{id}',[UserGroupController::class,'destroy'])->name('group
 // // Delete Method
 // Route::delete('users/{id}',[UsersController::class,'delete'])->name('delete');
 
-Route::resource('users',UserController::class,['except'=>['show']]);
+Route::resource('users',UserController::class);
 
 // ['except]['only']
+
+
+// Catagory Work
+
+
+
+Route::resource('catagories',CatagoryController::class, ['except' => ['show'] ]);
 
 

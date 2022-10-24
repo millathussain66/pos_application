@@ -66,6 +66,13 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+     public function show($id)
+     {
+        $this->data['users'] = User::find($id);
+
+        return view('users.show',$this->data);
+     }
+
 
     /**
      * Show the form for editing the specified resource.
