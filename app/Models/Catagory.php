@@ -15,4 +15,14 @@ class Catagory extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+
+    public static function arrayForSelect(){
+        $arr =[];
+        $catagorys = Catagory::all();
+        foreach ($catagorys as $catagori) {
+            $arr[$catagori->id] =$catagori->title;
+        }
+        return $arr;
+    }
 }

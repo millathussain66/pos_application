@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Catagory;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $this->data['catagory']    = Catagory::arrayForSelect();
+        $this->data['mode']      = "create";
+
+        return view('product.form', $this->data);
     }
 
     /**
