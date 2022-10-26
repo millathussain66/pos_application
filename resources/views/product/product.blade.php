@@ -32,7 +32,6 @@
                         <th>#ID</th>
                         <th>catagory_id</th>
                         <th>title</th>
-                        <th>description</th>
                         <th>const_price</th>
                         <th>price</th>
                         <th>Action</th>
@@ -44,7 +43,6 @@
                         <th>#ID</th>
                         <th>catagory_id</th>
                         <th>title</th>
-                        <th>description</th>
                         <th>const_price</th>
                         <th>price</th>
                         <th>Action</th>
@@ -56,7 +54,6 @@
                         <td>{{ $product->id }}</td>
                         <td>{{ $product->catagory->title }}</td>
                         <td>{{ $product->title }}</td>
-                        <td>{{ $product->description }}</td>
                         <td>{{ $product->const_price }}</td>
                         <td>{{ $product->price }}</td>
 
