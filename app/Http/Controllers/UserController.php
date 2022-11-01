@@ -36,7 +36,6 @@ class UserController extends Controller
 
         $this->data['groups']    = Group::arrayForSelect();
         $this->data['mode']      = "create";
-
         return view('users.form', $this->data);
 
     }

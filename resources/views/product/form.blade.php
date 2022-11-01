@@ -30,25 +30,18 @@
         <div class="row justify-content-center">
             <div class="col-xl-10">
 
-
                 @if(isset($product))
 
                 {!!Form::model($product,['route' => ['product.update', $product->id], 'method' => 'put']) !!}
-
 
                 @else
                 {!!Form::open(['route' => 'product.store', 'method' => 'post']) !!}
                 @endif
 
-
-
-
                 <!--Collective Form -->
 
                 {!!Form::open(['route' => 'product.store', 'method' => 'post']) !!}
                 {!! Form::token() !!}
-
-
 
 
                 <div class="form-group">
@@ -76,10 +69,10 @@
                 <!-- Form Catagroy From  -->
                 <div class="form-group w-25">
                     <label for="">Product Catagory </label>
-                    {!! Form::select('title', $catagory ,NULL,['class' => 'form-control','placeholder'=>"Select Your Group"] ) !!}
+                    {!! Form::select('catagory_id', $catagory ,NULL,['class' => 'form-control','placeholder'=>"Select Your Group"] ) !!}
 
                     <small class=" text-danger">
-                        @error('title')
+                        @error('catagory_id')
                         {{ $message }}
                         @enderror
                     </small>
