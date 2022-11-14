@@ -19,6 +19,12 @@ class User extends Model
     }
 
 
+    public function sales()
+    {
+        return $this->hasMany(SaleInvoice::class);
+    }
+
+
 
 
 
